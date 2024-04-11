@@ -1,0 +1,20 @@
+Je suis parti de la base de code du mini-framework. 
+
+- Docker: 
+    Fichier docker-compose.yml qui déclare 3 services:
+    PHP (construit à parti de l'image php:apache qui inclue à la fois PHP et le serveur web)
+    MySQL 
+    Adminer 
+    Le dockefile dans /docker/php permet d'installer pdo mysql et active le mode rewrite d'apache
+
+- controllers/ShopControll:
+    Contient toutes les routes pour créer, modifier, lister et supprimer un magasin
+    Filtrer: La route /shop_list.php permet d'obtenir tous les magasins. 
+            On peut filtrer les magasins par "magasin_nom" et/ou "magasin_type".
+            Ex: /shop_list?magasin_type=Jouet nous permet d'avoir tous les magasins de jouets
+                /shop_list?magasin_nom=Decathlon nous permet d'avoir le magasin Décathlon (je n'ai pas mis de contrainte d'unicité sur le nom)
+- BDD: La base de données s'appelle "api" et contient 2 tables:
+       magasin (magasin_id, magasin_nom, magasin_type)
+       magasin_lang (magasin_lang_id, magasin_lang_nom, magasin_lang_type, fk_lang_id)
+       Un fichier d'import "importSql_api" permet de générer cette base de données avec quelques données de test
+    
